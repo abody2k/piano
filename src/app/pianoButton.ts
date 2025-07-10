@@ -1,31 +1,52 @@
-import { Component, input, output } from "@angular/core";
+import { Component, inject, input, OnInit, output } from "@angular/core";
 
 @Component({
 
+    
     template:`
     
     @if (keyType())
         {
 
-            <div class=" h-4 bg-white active:bg-gray-100"></div>
+            <div class="w-20 h-24 bg-white active:bg-gray-100"  (mousedown)="pressed()" (mouseup)="released()"></div>
 
         }
     @else         {
 
-            <div class=" h-2 bg-black active:bg-gray-900"></div>
+            <div class="w-20 h-16 bg-black active:bg-gray-900 m-2 relative -top-2" (mousedown)="pressed()" (mouseup)="released()"></div>
 
         }
     <div></div>
     
     `,
-    selector:"button"
+    selector:"piano-button"
 })
-export class PianoButton {
+export class PianoButton implements OnInit {
+
 
     keyType = input(false); // if it's false it's a white key, otherwise it's a black one
+    name = input("");
+    audio = new Audio()
+    // audioLoder = inject(WebAudioService)
 
-    constructor() {
-        // get the audio using the name from parent
-        
+        ngOnInit(): void {
+            // this.audioLoder.loadNote(this.name(),"/assets/"+this.name()+".mp3");
+        this.audio = new Audio("/assets/"+this.name()+".mp3");
+        this.audio.loop= false;
     }
+
+    pressed(){
+
+        // this.audioLoder.playNote(this.name())
+        
+        
+this.audio.play();
+    }
+
+    released(){
+        this.audio.pause()
+        this.audio.currentTime=0
+    }
+
+    
 }
