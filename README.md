@@ -3,7 +3,11 @@
 
 A project I made with passion because why not.
 
-I hope I can finish it before I go to sleep tho
+I hope I can finish it before I go to sleep tho.
+
+It's deployed on
+
+unos.space
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
 

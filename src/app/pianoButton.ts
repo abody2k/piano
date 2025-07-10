@@ -8,12 +8,12 @@ import { Component, inject, input, OnInit, output } from "@angular/core";
     @if (keyType())
         {
 
-            <div class="w-20 h-24 bg-white active:bg-gray-100"  (mousedown)="pressed()" (mouseup)="released()"></div>
+            <div class="w-20 h-24 bg-white active:bg-gray-100"  (mousedown)="pressed()" ></div>
 
         }
     @else         {
 
-            <div class="w-20 h-16 bg-black active:bg-gray-900 m-2 relative -top-2" (mousedown)="pressed()" (mouseup)="released()"></div>
+            <div class="w-20 h-16 bg-black active:bg-gray-900 m-2 relative -top-2" (mousedown)="pressed()" ></div>
 
         }
     <div></div>
@@ -39,11 +39,12 @@ export class PianoButton implements OnInit {
 
         // this.audioLoder.playNote(this.name())
         
-        
+        this.audio.currentTime=0
 this.audio.play();
     }
 
     released(){
+
         this.audio.pause()
         this.audio.currentTime=0
     }
